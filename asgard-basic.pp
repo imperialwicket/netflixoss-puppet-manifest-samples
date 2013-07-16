@@ -17,7 +17,7 @@ node default {
     ensure  => installed,
     require => Package['openjdk-7-jdk']
   }
-  file { '/usr/share/tomcat7':
+  file { '/var/lib/tomcat7':
     owner   => 'tomcat7',
     group   => 'tomcat7',
     require => Package['tomcat7'],
