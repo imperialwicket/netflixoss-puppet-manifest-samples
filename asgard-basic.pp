@@ -17,6 +17,17 @@ node default {
     ensure  => installed,
     require => Package['openjdk-7-jdk']
   }
+  file { '/usr/share/tomcat7':
+    owner   => 'tomcat7',
+    group   => 'tomcat7',
+    require => Package['tomcat7'],
+  }
+  # Big hack, probably breaks RHEL...
+  file { '/usr/share/tomcat7/bin/setenv.sh':
+    ensure  => link,
+    target  => '/var/lib/tomcat7/bin/setenv.sh',
+    require => Package['tomcat7'],
+  }
 
   # Asgard
   class { 'asgard':
@@ -24,5 +35,5 @@ node default {
     tomcat_dir => '/var/lib/tomcat7',
   }
 
-  Package['tomcat7'] -> Class['asgard']
+  File['/var/lib/tomcat7'] -> Class['asgard']
 }
