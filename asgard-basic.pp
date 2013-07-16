@@ -8,7 +8,7 @@
 #
 node default {
   # JDK
-  package { 'openjdk-devel':
+  package { 'openjdk-7-jdk':
     ensure => installed,
   }
 
