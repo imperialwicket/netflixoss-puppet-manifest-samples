@@ -4,7 +4,6 @@
 #
 # Required modules:
 #
-# tomcat - https://github.com/camptocamp/puppet-tomcat.git
 # asgard - https://github.com/imperialwicket/puppet-asgard.git
 #
 node default {
@@ -14,9 +13,8 @@ node default {
   }
 
   # Tomcat
-  include tomcat
-  tomcat::instance { 'asgard':
-    ensure    => present,
-    http_port => '8080',
+  package { 'tomcat7':
+    ensure  => installed,
+    require => Package['openjdk-devel']
   }
 }
