@@ -17,4 +17,12 @@ node default {
     ensure  => installed,
     require => Package['openjdk-7-jdk']
   }
+
+  # Asgard
+  class { 'asgard':
+    version    => '1.2',
+    tomcat_dir => '/var/lib/tomcat7',
+  }
+
+  Package['tomcat7'] -> Class['asgard']
 }
