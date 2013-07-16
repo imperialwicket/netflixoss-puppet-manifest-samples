@@ -15,6 +15,6 @@ node default {
   # Tomcat
   package { 'tomcat7':
     ensure  => installed,
-    require => Package['openjdk-devel']
+    require => Package['openjdk-7-jdk']
   }
 }
