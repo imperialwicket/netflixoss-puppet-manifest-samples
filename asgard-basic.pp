@@ -17,7 +17,7 @@ node default {
     ensure  => installed,
     require => Package['openjdk-7-jdk']
   }
-  file { '/var/lib/tomcat7':
+  file { '/usr/share/tomcat7':
     owner   => 'tomcat7',
     group   => 'tomcat7',
     require => Package['tomcat7'],
@@ -35,5 +35,5 @@ node default {
     tomcat_dir => '/var/lib/tomcat7',
   }
 
-  File['/var/lib/tomcat7'] -> Class['asgard']
+  File['/usr/share/tomcat7'] -> Class['asgard']
 }
